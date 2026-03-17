@@ -14,8 +14,8 @@ ca = certifi.where()
 import pymongo
 import pandas as pd
 import numpy as np
-from Network_Security.exception.exception import NetworkSecurityException
-from Network_Security.logging.logger import logging
+from networksecurity.exception.exception import NetworkSecurityException
+from networksecurity.logging.logger import logging
 
 class NetworkDataExtract:
     def __init__(self):
@@ -26,7 +26,7 @@ class NetworkDataExtract:
         
     def csv_to_json_convertor(self, file_path):
         try:
-            data = pd.read_csv(file_path)
+            data = pd.read_csv(file_path) 
             data.reset_index(drop=True, inplace=True)
             records = list(json.loads(data.T.to_json()).values())
             return records
@@ -48,7 +48,7 @@ class NetworkDataExtract:
             raise NetworkSecurityException(e, sys)
 
 if __name__ == "__main__":
-    FILE_PATH = "Network_Data\phisingData.csv"
+    FILE_PATH = "Network_Data\\phisingData.csv"
     DATABASE = "RanjithAI"
     Collection = "NetworkData"
     networkobj = NetworkDataExtract()
@@ -56,3 +56,5 @@ if __name__ == "__main__":
     print(f"Total no of records: {len(records)}")
     no_of_records = networkobj.insert_data_mongoDB(records=records, database=DATABASE, collection=Collection)
     print(f"No of records inserted: {no_of_records}")
+
+
