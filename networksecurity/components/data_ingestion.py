@@ -1,10 +1,8 @@
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
-
 from networksecurity.entity.config_entity import DataIngestionConfig, TrainingPipelineConfig
 
 #configuration for data ingestion config
-
 from networksecurity.entity.config_entity import DataIngestionConfig
 from networksecurity.entity.artifact_entity import DataIngestionArtifact
 import os
